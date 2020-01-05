@@ -1,5 +1,5 @@
 package controlador;
-
+import controlador.ControladorConsultaReserva;
 import modelo.Recurso;
 import modelo.Sala;
 import modelo.Usuario;
@@ -52,7 +52,9 @@ public class ControladorFuncionarioDAO implements ActionListener {
             case "Análisis de datos":
 
                 break;
-            case "Consultar Reserva":;
+            case "Consultar Reserva":
+                this.vista.setVisible(false);
+                ControladorConsultaReserva contro =new ControladorConsultaReserva();
                 break;
             case "Cancelar Reserva":
 

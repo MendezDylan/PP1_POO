@@ -47,8 +47,7 @@ public class ControladorConsultaReserva implements ActionListener {
             Connection con = conn.getConexion();
             String carne;
             carne = vista.txtCarne.getText();
-            String sql = "Select reserva.idReserva,reserva.asunto,reserva.fechaHoraInicio,reserva.fechaHoraFinalizacion,reserva.capacidadMinima,reserva.idEstado,reserva.cedula,reserva.idSala "
-                    + "from reserva  join persona on persona.cedula=reserva.cedula where persona.carnet='" + carne + "'";
+            String sql = "Select reserva.idReserva,reserva.asunto,reserva.horaInicio,reserva.horaFinalizacion,reserva.capacidadMinima,reserva.idEstado,reserva.cedula,reserva.idSala from reserva  join persona on persona.cedula=reserva.cedula where persona.carnet='" + carne + "'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
