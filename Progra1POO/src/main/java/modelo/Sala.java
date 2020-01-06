@@ -102,4 +102,10 @@ public class Sala {
         HorarioExcepcion horario = new HorarioExcepcion();
         listaExcepciones.add(horario);
     }
+
+  @Override
+  public String toString() {
+    return "Sala{" + "idSala=" + idSala + ", ubicacion=" + ubicacion + ", capacidadMaxima=" + capacidadMaxima + ", calificacion=" + calificacion + '}';
+  }
+    
 }

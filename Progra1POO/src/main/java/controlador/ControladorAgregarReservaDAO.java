@@ -1,5 +1,6 @@
 package controlador;
 
+import api.Mail;
 import conexion.ConexionJavaMySQL;
 import modelo.Participante;
 import modelo.Reserva;
@@ -15,6 +16,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -198,6 +203,11 @@ public class ControladorAgregarReservaDAO implements ActionListener {
                     && daoVarios.validarCantidadIncidentes(vista.txtNU.getText()) < 5
                     && daoSala.obtenerEstadoSala(idSala) == 1) {
                 if (daoReserva.registrarReserva(reserva)) {
+                  try {
+                    EnviarCorreos(reserva);
+                  } catch (MessagingException ex) {
+                    Logger.getLogger(ControladorAgregarReservaDAO.class.getName()).log(Level.SEVERE, null, ex);
+                  }
                     JOptionPane.showMessageDialog(vista, "Reserva creada con éxito");
                 } else {
                     JOptionPane.showMessageDialog(vista, "Error al crear Reserva");
@@ -208,6 +218,14 @@ public class ControladorAgregarReservaDAO implements ActionListener {
         }
     }
 
+    public void EnviarCorreos(Reserva reserva) throws MessagingException{
+      String str="Datos de la sala: "+reserva.toString()+"\n"+"Datos de la reservación: "+reserva.toString();
+      ArrayList<Participante> listaParticipantes= reserva.getListaParticipantes();
+      for(int i=0;  listaParticipantes.size()>i;i++){
+        Mail.enviarCorreo(str, listaParticipantes.get(i).getCorreo());
+      }
+    }
+    
     public String generarCodigo() {
         String codigo = "";
         codigo = codigo + vista.txtIdSala.getText() + vista.txtIdReserva.getText() + vista.txtCarnet.getText();

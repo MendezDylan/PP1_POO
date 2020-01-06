@@ -61,6 +61,10 @@ public class Reserva {
         return idSala;
     }
 
+  public ArrayList<Participante> getListaParticipantes() {
+    return listaParticipantes;
+  }
+
     public void agregarParticipante(Participante pParticipante) {
         Participante part = new Participante(pParticipante.getPrimerNombre(), pParticipante.getPrimerApellido(), pParticipante.getCorreo(), pParticipante.getIdReserva());
         listaParticipantes.add(part);
