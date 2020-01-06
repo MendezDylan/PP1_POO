@@ -29,10 +29,10 @@ public class ControladorFuncionesEstudiante implements ActionListener {
             case "Cancelar Reserva":
                 agregarSala();
                 break;
-           case "Calificar Sala":
-                System.out.println("entra");
+           case "Calificar Sala":               
                 this.vista.setVisible(false);
                 ControladorCalificarSala controladorCalificarSala = new ControladorCalificarSala();
+                controladorCalificarSala.vista.txtNU.setText(this.vista.txtNU.getText());
                 break;
             default:
                 System.out.println("default");

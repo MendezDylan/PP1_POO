@@ -21,7 +21,6 @@ public class ControladorCalificarSala implements ActionListener {
   
   
   public ControladorCalificarSala (){
-    System.out.println("entra2");
     this.vista.setVisible(true);
     this.vista.botonGenerar.addActionListener(this);
   }

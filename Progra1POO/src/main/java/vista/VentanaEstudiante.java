@@ -42,6 +42,11 @@ public class VentanaEstudiante extends javax.swing.JFrame {
     btCancelarReserva.setText("Cancelar Reserva");
 
     btCalificarSala.setText("Calificar Sala");
+    btCalificarSala.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btCalificarSalaActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -78,6 +83,10 @@ public class VentanaEstudiante extends javax.swing.JFrame {
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
+
+  private void btCalificarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCalificarSalaActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_btCalificarSalaActionPerformed
 
     /**
      * @param args the command line arguments
