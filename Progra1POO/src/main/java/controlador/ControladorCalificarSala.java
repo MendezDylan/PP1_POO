@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Scanner;
 import javax.swing.table.DefaultTableModel;
 import vista.VentanaCalificarSala;
 /**
@@ -16,6 +17,25 @@ import vista.VentanaCalificarSala;
  */
 public class ControladorCalificarSala implements ActionListener {
   VentanaCalificarSala vista = new VentanaCalificarSala();
+          public String aleatorio(String resultado, String palabras, int numero) {
+
+        String[] arrayPalabra = palabras.split("");
+
+        int numeroAleatorio = 0;
+
+        for (int i = 0; i < numero; i++) {
+
+            numeroAleatorio = (int) (Math.random() * (arrayPalabra.length - 1) + 0);
+
+
+
+            resultado = resultado + arrayPalabra[numeroAleatorio];
+
+        }
+
+        return resultado;
+    
+}
   
   
   
@@ -31,12 +51,13 @@ public class ControladorCalificarSala implements ActionListener {
       case "Generar Codigo":
         
         try {
+          String nombre=vista.txtNU.getText();
           PreparedStatement ps = null;
           ResultSet rs = null;
           ConexionJavaMySQL conn = new ConexionJavaMySQL();
           Connection con = conn.getConexion();
           String carne;
-          String sql = "Select persona.telefono from persona join usuario on usuario.cedula=persona.cedula where nombreUsuario='Jere'";
+          String sql = "Select persona.telefono from persona join usuario on usuario.cedula=persona.cedula where nombreUsuario='"+nombre+"'";
           ps = con.prepareStatement(sql);
           rs = ps.executeQuery();
           ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
@@ -47,10 +68,21 @@ public class ControladorCalificarSala implements ActionListener {
             for (int i = 0; i < cantidadColumnas; i++) {
               filas[i] = rs.getObject(i + 1);
             }
+            String LetrasMay, LetrasMin, CaracteresEsp, numeros, resultado = "";
+        LetrasMin = "abcdefghijhlmnñopqrtuwxyz";
+        LetrasMay = "ABCDEFGHIJQLMNÑOPQRTSUVWXYZ";
+        CaracteresEsp = "+-*/=%&#!?^“‘~|<>()[]{}:;.,";
+        numeros = "1234567890";
+        Scanner sca = new Scanner(System.in);
+        resultado=aleatorio(resultado, LetrasMin, 3);
+        resultado=aleatorio(resultado, LetrasMay, 2);
+        resultado=aleatorio(resultado, CaracteresEsp, 2);
+        resultado=aleatorio(resultado, numeros, 3);
+        System.out.println(""+resultado);
             int numero;
             numero=(int) filas[0];
             String s = String.valueOf(numero);
-            Sms.enviarMensaje("Hola Maldito", s);
+            Sms.enviarMensaje(resultado, s);
             System.out.println(numero);
           }  
         } catch (SQLException ex) {
