@@ -116,7 +116,7 @@ public class VentanaEstudiante extends javax.swing.JFrame {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   public javax.swing.JButton btAgregarReserva;
-  private javax.swing.JButton btCalificarSala;
+  public javax.swing.JButton btCalificarSala;
   public javax.swing.JButton btCancelarReserva;
   private javax.swing.JLabel jLabel1;
   public javax.swing.JTextField txtNU;

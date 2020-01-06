@@ -1,5 +1,5 @@
 package controlador;
-
+import controlador.ControladorCalificarSala;
 import modelo.Reserva;
 import vista.VentanaCancelarReserva;
 import vista.VentanaEstudiante;
@@ -16,6 +16,8 @@ public class ControladorFuncionesEstudiante implements ActionListener {
     public ControladorFuncionesEstudiante(VentanaEstudiante pVista) {
         vista = pVista;
         this.vista.btAgregarReserva.addActionListener(this);
+        this.vista.btCalificarSala.addActionListener(this);
+
     }
 
     @Override
@@ -26,6 +28,10 @@ public class ControladorFuncionesEstudiante implements ActionListener {
                 break;
             case "Cancelar Reserva":
                 agregarSala();
+                break;
+           case "Calificar Sala":
+                System.out.println("Si entra");
+                calificarSala();
                 break;
             default:
                 break;
@@ -52,5 +58,11 @@ public class ControladorFuncionesEstudiante implements ActionListener {
         ControladorCancelarReservaDAO controladorCancelarReserva = new ControladorCancelarReservaDAO(vista);
         controladorCancelarReserva.vista.setVisible(true);
         controladorCancelarReserva.vista.setLocationRelativeTo(null);
+    }
+    
+    public void calificarSala(){
+      System.out.println("Si entra1");
+      ControladorCalificarSala controladorCalificarSala = new ControladorCalificarSala();
+      controladorCalificarSala.vista.setVisible(true);
     }
 }
