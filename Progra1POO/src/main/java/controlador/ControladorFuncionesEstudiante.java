@@ -30,10 +30,12 @@ public class ControladorFuncionesEstudiante implements ActionListener {
                 agregarSala();
                 break;
            case "Calificar Sala":
-                System.out.println("Si entra");
-                calificarSala();
+                System.out.println("entra");
+                this.vista.setVisible(false);
+                ControladorCalificarSala controladorCalificarSala = new ControladorCalificarSala();
                 break;
             default:
+                System.out.println("default");
                 break;
         }
     }
@@ -60,9 +62,6 @@ public class ControladorFuncionesEstudiante implements ActionListener {
         controladorCancelarReserva.vista.setLocationRelativeTo(null);
     }
     
-    public void calificarSala(){
-      System.out.println("Si entra1");
-      ControladorCalificarSala controladorCalificarSala = new ControladorCalificarSala();
-      controladorCalificarSala.vista.setVisible(true);
+    public void calificarSala(){;
     }
 }
