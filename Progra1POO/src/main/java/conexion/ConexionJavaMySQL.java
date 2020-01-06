@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 public class ConexionJavaMySQL {
     private final String base = "proyecto";
     private final String user = "root";
-    private final String password = "1234";
+    private final String password = "100712";
     String url = "jdbc:mysql://localhost:3306/" + base + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private Connection con = null;
 
